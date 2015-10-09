@@ -14,5 +14,5 @@ function rating_review_node_presave($node) {
 		}
 		$node->field_owner_rating['und'][0]['value'] = round($result / 5);
 	}
-	dsm($node);
+	//dsm($node);
 }
