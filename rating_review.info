@@ -1,0 +1,3 @@
+name = "Rating review"
+description = "This is module calculate owner rating."
+core = 7.x

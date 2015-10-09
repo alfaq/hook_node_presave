@@ -1,0 +1,18 @@
+<?php
+function rating_review_node_presave($node) {
+	if($node->type == 'owner_car_review'){
+		$tids = array();
+		$tids[] = $node->field_performance_economy_owner['und'][0]['tid'];
+		$tids[] = $node->field_cabin_space_comfort_owner['und'][0]['tid'];
+		$tids[] = $node->field_technology_con_owner['und'][0]['tid'];
+		$tids[] = $node->field_price_features_owner['und'][0]['tid'];
+		$tids[] = $node->field_ride_handling_owner['und'][0]['tid'];
+		$result = 0;
+		foreach($tids as $tid){
+			$term = taxonomy_term_load($tid);
+			$result += ($term->name*1);
+		}
+		$node->field_owner_rating['und'][0]['value'] = round($result / 5);
+	}
+	dsm($node);
+}
